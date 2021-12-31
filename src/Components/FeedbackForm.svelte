@@ -1,4 +1,8 @@
 <script>
+  import Card from "./Card.svelte";
+  import Button from "./Button.svelte";
+  import RatingSelect from "./RatingSelect.svelte";
+
   let text = "";
   let rating = 10;
   let btnDisabled = true;
@@ -8,7 +12,6 @@
   const handleSelect = (e) => (rating = e.detail);
   const handleInput = () => {
     //   validations
-
     if (text.trim().length <= min) {
       message = `Text must be at least ${min} characters`;
       btnDisabled = true;
