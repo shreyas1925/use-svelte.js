@@ -4,7 +4,6 @@
   let para = false;
   let color = "#db5f36";
   $: bio = `Heyy I am ${name} , ${age} years old! `;
-
   let students = [
     {
       id: 1,
@@ -13,7 +12,6 @@
     { id: 2, name: "Mary" },
     { id: 3, name: "Brian" },
   ];
-
   const toggle = () => {
     para = !para;
     students = [...students, { id: 4, name: "July" }];
