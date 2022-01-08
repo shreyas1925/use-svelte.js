@@ -1,12 +1,18 @@
 <script>
+  import { v4 as uuidv4 } from "uuid";
+  import { createEventDispatcher } from "svelte";
   import Card from "../Components/Card.svelte";
   import Button from "../Components/Button.svelte";
   import RatingSelect from "./RatingSelect.svelte";
+
+  const dispatch = createEventDispatcher();
+
   let text = "";
   let rating = 10;
   let btnDisabled = true;
   let min = 10;
   let message;
+
   const handleSelect = (e) => (rating = e.detail);
   const handleInput = () => {
     if (text.trim().length <= min) {
@@ -20,13 +26,11 @@
   const handleSubmit = () => {
     if (text.trim().length > min) {
       const newFeedback = {
-        id: uuidv4(),
+        id: uuidv4(), //gives us the custom id
         text,
         rating: +rating,
       };
-      FeedbackStore.update((currentFeedback) => {
-        return [newFeedback, ...currentFeedback];
-      });
+      dispatch("add-feedback", newFeedback);
       text = "";
     }
   };

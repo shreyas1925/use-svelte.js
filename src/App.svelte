@@ -25,6 +25,12 @@
   $: average = Math.round(
     feedback.reduce((a, { rating }) => a + rating, 0.0) / feedback.length
   );
+
+  const addFeedback = (e) => {
+    const newfeedback = e.detail;
+    feedback = [newfeedback, ...feedback];
+  };
+
   // float_num.toFixed(2);
   const delFeedback = (e) => {
     const itemId = e.detail;
@@ -33,7 +39,7 @@
 </script>
 
 <main class="container">
-  <FeedbackForm />
+  <FeedbackForm on:add-feedback={addFeedback} />
   <FeedbackStats {count} {average} />
   <FeedbackList {feedback} on:del-feedback={delFeedback} />
 </main>
