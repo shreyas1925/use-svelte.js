@@ -20,7 +20,6 @@
     students = [...students, { id: 4, name: "July" }];
     color = color === "#db5f36" ? "green" : "#db5f36";
   };
-  
 </script>
 
 <main>
